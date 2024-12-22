@@ -23,11 +23,11 @@ public class User {
         return id;
     }
 
-    public String username() {
+    public String getUsername() {
         return username;
     }
 
-    public String password() {
+    public String getPassword() {
         return password;
     }
 
