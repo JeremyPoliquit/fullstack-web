@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.spring.backend.Repository.UserRepository;
 import com.spring.backend.Entity.User;
@@ -58,6 +60,20 @@ public class UserService {
             User password = optionalUser.get();
             password.setPassword(updatePassword.getPassword());
             return userRepository.save(password);
+        } else {
+            throw new RuntimeException("User with ID " + id + " not found");
+        }
+    }
+
+    // Delete all User
+    public void deleteAll() {
+        userRepository.deleteAll();
+    }
+
+    // Delete by Id
+    public void deleteUser(long id) {
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
         } else {
             throw new RuntimeException("User with ID " + id + " not found");
         }
