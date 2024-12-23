@@ -35,8 +35,20 @@ public class UserController {
     }
 
     @PutMapping("/update-user{id}")
-    public ResponseEntity<User> updatedUser(@PathVariable Long id, @RequestBody User userUpdate) {
-        User user = userService.updatedUser(id, userUpdate);
-        return ResponseEntity.ok(user);
+    public ResponseEntity<User> updateAccount(@PathVariable Long id, @RequestBody User userUpdate) {
+        User account = userService.updateUser(id, userUpdate);
+        return ResponseEntity.ok(account);
+    }
+
+    @PutMapping("/update-username{id}")
+    public ResponseEntity<User> updateUserAccount(@PathVariable Long id, @RequestBody User updateUsername) {
+        User username = userService.updateUsername(id, updateUsername);
+        return ResponseEntity.ok(username);
+    }
+
+    @PutMapping("/update-password{id}")
+    public ResponseEntity<User> updateUserPassword(@PathVariable Long id, @RequestBody User updatePassword) {
+        User password = userService.updatePassword(id, updatePassword);
+        return ResponseEntity.ok(password);
     }
 }
