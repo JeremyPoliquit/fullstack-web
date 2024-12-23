@@ -58,7 +58,7 @@ public class UserController {
     }
 
     // Delete All
-    @DeleteMapping("/delete{id}")
+    @DeleteMapping("/delete")
     public ResponseEntity<Void> deleteUser() {
         userService.deleteAll();
         return ResponseEntity.noContent().build();
